@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/page/call_api.dart';
+import 'package:flutter_app/page/googlescreen.dart';
+import 'package:flutter_app/page/home_page.dart';
+import 'package:flutter_app/page/list_page.dart';
 
-import 'DrawerPage.dart';
-import 'GoogleScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -64,10 +66,30 @@ class _MyHomePageState extends State<MyHomePage> {
   void _moveToNextScreen(){
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => GoogleScreen(title: "Drawer title")),
+//      MaterialPageRoute(builder: (context) => GoogleScreen(title: "Drawer title")),
+      MaterialPageRoute(builder: (context) => HomePage()),
     );
   }
 
+  void _openGoogleMap(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => GoogleScreen()),
+    );
+  }
+
+  void _callAPI(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => CallAPI()),
+    );
+  }
+  void _callPage(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ListPage()),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -85,7 +107,9 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        child:
+        Column(
+
           // Column is also layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -102,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Image.asset('assets/images/lake.png'),
             Text(
               'You have pushed the button this many times:',
             ),
@@ -115,7 +140,32 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.red,
               padding: const EdgeInsets.fromLTRB(18.0,8,18,8),
               child: new Text(
-                "Subtract",
+                "Open Drawer",
+              ),
+            ),
+            RaisedButton(
+                onPressed: _openGoogleMap,
+              textColor: Colors.white,
+              color: Colors.blueGrey,
+              padding: const EdgeInsets.all(15),
+              child: new Text(
+                "Open Map"
+              ),
+            ),RaisedButton(
+                onPressed: _callAPI,
+              textColor: Colors.white,
+              color: Colors.blueGrey,
+              padding: const EdgeInsets.fromLTRB(18.0,8,18,8),
+              child: new Text(
+                "Call API"
+              ),
+            ),RaisedButton(
+                onPressed: _callPage,
+              textColor: Colors.white,
+              color: Colors.blueGrey,
+              padding: const EdgeInsets.fromLTRB(18.0,8,18,8),
+              child: new Text(
+                "Types list"
               ),
             ),
 
